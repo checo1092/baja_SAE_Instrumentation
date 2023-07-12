@@ -15,7 +15,14 @@
 #define RST 23
 #define DIO0 26
 
+// Parameters for the LoRa protocol
 #define BAND 433E6
+// Supported values are between 2 and 17, defualt to 14
+#define TXPOWER 17
+//Supported values are between 6 and 12, default to 7. 6 implies implicit header
+#define SPREDINGFACTOR 6
+// true enables implicit header mode, false enables explicit header mode (default)
+#define IMPLICIDHEADER true
 
 //OLED pins
 #define OLED_SDA 21

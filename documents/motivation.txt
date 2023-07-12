@@ -1,0 +1,3 @@
+La sección de Instrumentación tiene la responsabilidad de diseñar e implementar una red de sensores e indicadores en el vehículo con el propósito de conocer su estado y ubicación durante las pruebas. Además, proporciona información útil para la caracterización de los diversos componentes del vehículo, integrando estos datos en las diferentes etapas de diseño.
+
+Conocer el estado y la ubicación del vehículo en tiempo real resulta fundamental en las pruebas de resistencia, ya que permite prever posibles fallas y anticiparse a ellas, reduciendo los tiempos de traslado y reparación.
