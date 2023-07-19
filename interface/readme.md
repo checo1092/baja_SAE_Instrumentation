@@ -7,4 +7,9 @@ This folder contains the interface layouts. The App Designer was selected as it 
 
 
 ***
+## Matlab code  to work with Arduino
+1. serialportlist("available")'
+2. arduinoObj = serialport("/dev/ttyACM0",115200)
+3. flush(arduinoObj)
+4. configureTerminator(arduinoObj,"CR/LF"); 
 
