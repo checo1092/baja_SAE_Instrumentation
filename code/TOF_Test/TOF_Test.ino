@@ -20,7 +20,7 @@ void setup() {
 }
 
 void loop() {
-  float lux = vl.readLux(VL6180X_ALS_GAIN_5);
+  //float lux = vl.readLux(VL6180X_ALS_GAIN_5);
 
   //Serial.print("Lux: "); 
   //Serial.println(lux);
@@ -31,6 +31,11 @@ void loop() {
   if (status == VL6180X_ERROR_NONE) {
     //Serial.print("Range: "); 
     Serial.println(range);
+    // Serial.print(",");
+    // Serial.print(80);
+    // Serial.print(",");
+    // Serial.println(10);
+
   }
 
   // Some error occurred, print it out!
@@ -62,5 +67,5 @@ void loop() {
   else if (status == VL6180X_ERROR_RANGEOFLOW) {
     Serial.println("Range reading overflow");
   }
-  delay(100);
+  delay(50);
 }
