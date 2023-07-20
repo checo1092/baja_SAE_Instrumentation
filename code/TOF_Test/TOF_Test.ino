@@ -11,12 +11,12 @@ void setup() {
     delay(1);
   }
   
-  Serial.println("Adafruit VL6180x test!");
+  //Serial.println("Adafruit VL6180x test!");
   if (! vl.begin()) {
     Serial.println("Failed to find sensor");
     while (1);
   }
-  Serial.println("Sensor found!");
+  //Serial.println("Sensor found!");
 }
 
 void loop() {
@@ -30,11 +30,11 @@ void loop() {
 
   if (status == VL6180X_ERROR_NONE) {
     //Serial.print("Range: "); 
-    Serial.println(range);
-    // Serial.print(",");
-    // Serial.print(80);
-    // Serial.print(",");
-    // Serial.println(10);
+    Serial.print(range);
+    Serial.print(",");
+    Serial.print(80);
+    Serial.print(",");
+    Serial.println(10);
 
   }
 

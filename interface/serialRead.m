@@ -37,7 +37,6 @@ end
 
 
 %%
-fclose(arduinoObj)
 delete(arduinoObj)
 
 
