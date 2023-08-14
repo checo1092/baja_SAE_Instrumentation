@@ -11,8 +11,8 @@
 
 //TinyGPS gps;
 
-//define the pins used by the LoRa transceiver module
 #define SCK 5
+//define the pins used by the LoRa transceiver module
 #define MISO 19
 #define MOSI 27
 #define SS 18
@@ -22,7 +22,8 @@
 // Parameters for the LoRa protocol
 #define BAND 433E6
 // Supported values are between 2 and 17, defualt to 14
-#define TXPOWER 17
+#define TXPOWER 20
+//#define TXPOWER 17
 //Supported values are between 6 and 12, default to 7
 #define SPREDINGFACTOR 6
 // true enables implicit header mode, false enables explicit header mode (default)

@@ -18,12 +18,17 @@
 // Parameters for the LoRa protocol
 #define BAND 433E6
 // Supported values are between 2 and 17, defualt to 14
-#define TXPOWER 17
+#define TXPOWER 20
+//#define TXPOWER 17
 //Supported values are between 6 and 12, default to 7. 6 implies implicit header
-#define SPREDINGFACTOR 6
+#define SPREDINGFACTOR 10
+//#define SPREDINGFACTOR 6
 // true enables implicit header mode, false enables explicit header mode (default)
 #define IMPLICIDHEADER true
-
+//Set LNA Gain for better RX sensitivity, by default AGC
+//(Automatic Gain Control) is used and LNA gain is not used. 0-6
+#define LNAgain 6
+  
 //OLED pins
 #define OLED_SDA 21
 #define OLED_SCL 22 
@@ -67,6 +72,7 @@ void setup() {
   SPI.begin(SCK, MISO, MOSI, SS);
   //setup LoRa transceiver module
   LoRa.setPins(SS, RST, DIO0);
+  LoRa.setGain(LNAgain);
 
   if (!LoRa.begin(BAND)) {
     Serial.println("Starting LoRa failed!");

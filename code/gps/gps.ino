@@ -32,7 +32,7 @@ void loop()
 {
   print_info_json();
 
-  smartDelay(10000);                                      
+  smartDelay(1000);                                      
 
   if (millis() > 5000 && gps.charsProcessed() < 10)
     Serial.println(F("No GPS data received: check wiring"));
