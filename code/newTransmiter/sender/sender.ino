@@ -12,7 +12,6 @@ LoRa_E220 e220ttl(&Serial2, 25, 27, 26);  //  RX AUX M0 M1
 
 //ADS const and vars
 boolean ads_on = false;
-const float C1 = 0.1875;
 //Sensor 1 psi =  382.92x - 186.64
 const float m1 = 382.92;
 const float b1 = 186.64;
@@ -26,7 +25,7 @@ float lat = -1, lng = -1;
 String data = "";
 
 void setup() {
-  Serial.begin(9600);
+  //Serial.begin(9600);
   delay(500);
   // Startup all pins and UART
   e220ttl.begin();
@@ -36,10 +35,14 @@ void setup() {
     ads_on = true;
   }
   Serial1.begin(9600, SERIAL_8N1, 34, 12);  //17-TX 18-RX for GPS
-  Serial2.begin(9600, SERIAL_8N1, 16, 17);  //OpenLog
+  Serial.begin(9600, SERIAL_8N1);  //OpenLog
 }
 
 void loop() {
+  float v1 = 0;
+  float v2 = 0;
+
+
   data = "";
   //read the GPS data 
   if (Serial1.available()) {
@@ -48,8 +51,11 @@ void loop() {
   }
   //Read the voltage of the pressure sensors and convert it to PSI
   if (ads_on) {
-    psi_1 = m1 * (C1 * ads.readADC_SingleEnded(0)) - b1;
-    psi_2 = m2 * (C1 * ads.readADC_SingleEnded(1)) - b2;
+    psi_1 = m1 * ads.computeVolts(ads.readADC_SingleEnded(0)) - b1;
+    psi_2 = m2 * ads.computeVolts(ads.readADC_SingleEnded(1)) - b2;
+    
+    v1 = ads.computeVolts(ads.readADC_SingleEnded(0));
+    v2 = ads.computeVolts(ads.readADC_SingleEnded(1));
   }
 
   //Concat the data
@@ -60,12 +66,17 @@ void loop() {
   data.concat(String(lat));
   data.concat(",");
   data.concat(String(lng));
-  data.concat("\n");
+  data.concat(",");
+  data.concat(String(millis()));
+  //data.concat("\n");
 
   //Send the data
   ResponseStatus rs = e220ttl.sendBroadcastFixedMessage(23, data);
-  Serial.println(rs.getResponseDescription());
+  //Serial.println(rs.getResponseDescription());
+
+  Serial.println(data); 
+  Serial1.println(data);
 
 
-  delay(100);
+  delay(500);
 }
