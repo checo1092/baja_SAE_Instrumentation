@@ -25,10 +25,7 @@
 //#define SPREDINGFACTOR 6
 // true enables implicit header mode, false enables explicit header mode (default)
 #define IMPLICIDHEADER true
-//Set LNA Gain for better RX sensitivity, by default AGC
-//(Automatic Gain Control) is used and LNA gain is not used. 0-6
-#define LNAgain 6
-  
+
 //OLED pins
 #define OLED_SDA 21
 #define OLED_SCL 22 
@@ -72,7 +69,6 @@ void setup() {
   SPI.begin(SCK, MISO, MOSI, SS);
   //setup LoRa transceiver module
   LoRa.setPins(SS, RST, DIO0);
-  LoRa.setGain(LNAgain);
 
   if (!LoRa.begin(BAND)) {
     Serial.println("Starting LoRa failed!");

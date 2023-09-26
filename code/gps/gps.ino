@@ -2,7 +2,7 @@
 #include <TinyGPS++.h>                       
 
 TinyGPSPlus gps;                            
-// HardwareSerial Serial1(1); // Glacierjay had to comment this out to remove linker warning
+// HardwareSerial Serial1(1); 
 
 int pktCount = 0; // count how many packets sent
 
@@ -28,9 +28,23 @@ void print_info_json(){
   Serial.println("\'}");
 }
 
+void print_gps(){
+  if(gps.location.isValid()){
+    Serial.print(gps.location.lat(), 5);
+    Serial.print(" ");
+    Serial.print(gps.location.lng(), 4);
+    Serial.print(" ");
+    Serial.println(gps.satellites.value());
+
+  }else {
+    Serial.println("-1 -1");
+  }
+}
+
 void loop()
 {
-  print_info_json();
+  //print_info_json();
+  print_gps();
 
   smartDelay(1000);                                      
 
@@ -38,8 +52,7 @@ void loop()
     Serial.println(F("No GPS data received: check wiring"));
 }
 
-static void smartDelay(unsigned long ms)                
-{
+static void smartDelay(unsigned long ms){
   unsigned long start = millis();
   do
   {
@@ -47,3 +60,7 @@ static void smartDelay(unsigned long ms)
       gps.encode(Serial1.read());
   } while (millis() - start < ms);
 }
+
+
+
+
