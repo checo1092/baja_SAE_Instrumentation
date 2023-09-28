@@ -19,7 +19,8 @@ void loop() {
 	ResponseContainer rc = e220ttl.receiveMessage();
 
 		// Print the data received
-		Serial.println(rc.data.substring(3));
+		//Serial.println(rc.data);
+    Serial.println(rc.data.substring(3));
 
 	}
   

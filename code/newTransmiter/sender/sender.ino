@@ -24,6 +24,8 @@ float psi_1 = -1, psi_2 = -1;
 float lat = -1, lng = -1;
 String data = "";
 
+int16_t contador = 0;
+
 void setup() {
   //Serial.begin(9600);
   delay(500);
@@ -34,7 +36,7 @@ void setup() {
   if (ads.begin()) {
     ads_on = true;
   }
-  Serial1.begin(9600, SERIAL_8N1, 34, 12);  //17-TX 18-RX for GPS
+  Serial1.begin(9600, SERIAL_8N1, 19, 18);  //17-TX 18-RX for GPS
   Serial.begin(9600, SERIAL_8N1);  //OpenLog
 }
 
@@ -68,6 +70,8 @@ void loop() {
   data.concat(String(lng));
   data.concat(",");
   data.concat(String(millis()));
+  data.concat(",");
+  data.concat(String(contador++));
   //data.concat("\n");
 
   //Send the data
@@ -75,7 +79,7 @@ void loop() {
   //Serial.println(rs.getResponseDescription());
 
   Serial.println(data); 
-  Serial1.println(data);
+  //Serial1.println(data);
 
 
   delay(500);
