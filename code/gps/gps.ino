@@ -8,8 +8,9 @@ int pktCount = 0; // count how many packets sent
 
 void setup()
 {
-  Serial.begin(115200);
-  Serial1.begin(9600, SERIAL_8N1, 34, 12);   //17-TX 18-RX for GPS
+  Serial.begin(9600);
+  //Serial1.begin(9600, SERIAL_8N1, 34, 12);   //17-TX 18-RX for GPS
+  Serial1.begin(9600, SERIAL_8N1, 19, 18);
 }
 
 void print_info_json(){
@@ -35,7 +36,6 @@ void print_gps(){
     Serial.print(gps.location.lng(), 4);
     Serial.print(" ");
     Serial.println(gps.satellites.value());
-
   }else {
     Serial.println("-1 -1");
   }
