@@ -11,6 +11,10 @@ void setup()
   Serial.begin(9600);
   //Serial1.begin(9600, SERIAL_8N1, 34, 12);   //17-TX 18-RX for GPS
   Serial1.begin(9600, SERIAL_8N1, 19, 18);
+  
+  pinMode(19, INPUT_PULLUP);
+  pinMode(18, INPUT_PULLUP);
+
 }
 
 void print_info_json(){
@@ -31,9 +35,9 @@ void print_info_json(){
 
 void print_gps(){
   if(gps.location.isValid()){
-    Serial.print(gps.location.lat(), 5);
+    Serial.print(gps.location.lat(), 8);
     Serial.print(" ");
-    Serial.print(gps.location.lng(), 4);
+    Serial.print(gps.location.lng(), 8);
     Serial.print(" ");
     Serial.println(gps.satellites.value());
   }else {
