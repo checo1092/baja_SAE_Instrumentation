@@ -445,8 +445,8 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "../../../../Desktop/mainPCB.dsn",
-      "step": "",
-      "vrml": ""
+      "step": "../../../../Desktop/mainPCB.step",
+      "vrml": "../../../../Desktop/mainPCB.wrl"
     },
     "page_layout_descr_file": ""
   },
